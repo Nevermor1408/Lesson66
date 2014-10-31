@@ -1,9 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package JARFILES;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -11,11 +9,17 @@ package JARFILES;
  */
 public class StudentGuii extends javax.swing.JFrame {
 
+
+    Student_1 s[];
+    int size, cursud;
     /**
      * Creates new form StudentGuii
      */
     public StudentGuii() {
         initComponents();
+        s = new Student_1[10];
+        size = 0;
+        cursud = -1;
     }
 
     /**
@@ -30,13 +34,13 @@ public class StudentGuii extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtname = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnprev = new javax.swing.JButton();
         txt1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        btnfirst = new javax.swing.JButton();
         txt3 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        btnnext = new javax.swing.JButton();
         txt2 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        btnlast = new javax.swing.JButton();
         txtavg = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -54,13 +58,38 @@ public class StudentGuii extends javax.swing.JFrame {
 
         jLabel5.setText("Test 3");
 
-        jButton1.setText("<");
+        txtname.setEditable(false);
 
-        jButton2.setText("<<");
+        btnprev.setText("<");
+        btnprev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnprevActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText(">");
+        txt1.setEditable(false);
 
-        jButton4.setText(">>");
+        btnfirst.setText("<<");
+        btnfirst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnfirstActionPerformed(evt);
+            }
+        });
+
+        txt3.setEditable(false);
+
+        btnnext.setText(">");
+        btnnext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnnextActionPerformed(evt);
+            }
+        });
+
+        txt2.setEditable(false);
+
+        btnlast.setText(">>");
+
+        txtavg.setEditable(false);
 
         jLabel9.setText("Current Index");
 
@@ -73,8 +102,18 @@ public class StudentGuii extends javax.swing.JFrame {
         jLabel3.setText("Test 1");
 
         btnadd.setText("Add");
+        btnadd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnaddActionPerformed(evt);
+            }
+        });
 
         btnmod.setText("Modify");
+        btnmod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmodActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,7 +130,7 @@ public class StudentGuii extends javax.swing.JFrame {
                                 .addComponent(txt3, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton2)
+                                    .addComponent(btnfirst)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -99,11 +138,11 @@ public class StudentGuii extends javax.swing.JFrame {
                                         .addComponent(txtavg, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(55, 55, 55)
-                                        .addComponent(jButton1)
+                                        .addComponent(btnprev)
                                         .addGap(44, 44, 44)
-                                        .addComponent(jButton3)
+                                        .addComponent(btnnext)
                                         .addGap(53, 53, 53)
-                                        .addComponent(jButton4))))
+                                        .addComponent(btnlast))))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -153,7 +192,7 @@ public class StudentGuii extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(108, 108, 108)
-                        .addComponent(jButton2)
+                        .addComponent(btnfirst)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -172,9 +211,9 @@ public class StudentGuii extends javax.swing.JFrame {
                                     .addComponent(txtavg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(33, 33, 33)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton1))
+                                    .addComponent(btnnext, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnlast, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnprev))
                                 .addGap(65, 65, 65)
                                 .addComponent(lblcount, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(154, 154, 154))
@@ -183,9 +222,77 @@ public class StudentGuii extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
+        
+         Studentpopupp spop = new Studentpopupp(this,true);
+         spop.setModal(true);
+         spop.setLocationRelativeTo(this);
+         spop.setVisible(true);
+         Student_1 temp = spop.getStudent();
+         String em = temp.validateData();
+         if(em==null)
+         {
+             s[size]=temp;
+             cursud=size;
+             size++;
+             showStudent();
+         }
+         else
+             JOptionPane.showMessageDialog(this,em);
+         
+        //this code wont run until popup is disposed 
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnaddActionPerformed
+
+    private void btnfirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfirstActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnfirstActionPerformed
+
+    private void btnprevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnprevActionPerformed
+        if(cursud>0){
+            cursud--;
+            showStudent();
+            
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnprevActionPerformed
+
+    private void btnnextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnextActionPerformed
+        if(cursud<size-1 && cursud>-1){
+            cursud++;
+            showStudent();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnnextActionPerformed
+
+    private void btnmodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodActionPerformed
+       Studentpopupp spop = new Studentpopupp(this, true);
+        spop.setForm(s[cursud]);
+        spop.setModal(true);
+        spop.setLocationRelativeTo(this);
+        spop.setVisible(true);
+        
+        s[cursud] = spop.getStudent();
+        showStudent();
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnmodActionPerformed
+
     /**
      * @param args the command line arguments
      */
+    public void showStudent(){
+        txtname.setText(s[cursud].getName());
+        txt1.setText(""+s[cursud].getScore(1));
+        txt2.setText(""+s[cursud].getScore(2));
+        txt3.setText(""+s[cursud].getScore(3));
+        txtavg.setText(""+s[cursud].getAverage());
+        lblcount.setText(""+size);
+        lblindex.setText(""+cursud);
+        
+       
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -221,11 +328,11 @@ public class StudentGuii extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnadd;
+    private javax.swing.JButton btnfirst;
+    private javax.swing.JButton btnlast;
     private javax.swing.JButton btnmod;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnnext;
+    private javax.swing.JButton btnprev;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
