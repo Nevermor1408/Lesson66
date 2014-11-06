@@ -9,12 +9,19 @@ import java.net.URL;
  * @author matt6341
  */
 public class CrapsGui extends javax.swing.JFrame {
-
+   Craps game;
+   boolean newgame;
+   int money;
     /**
      * Creates new form CrapsGui
      */
     public CrapsGui() {
         initComponents();
+        game = new Craps();
+        txtgame.setEditable(false);
+        newgame=true;
+        money=100;
+        txtgame.setText("Welcome to Craps, Click Roll to Start a game");
     }
 
     /**
@@ -26,42 +33,154 @@ public class CrapsGui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btndice = new javax.swing.JButton();
+        btnroll = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        lbltotal = new javax.swing.JLabel();
+        btnquit = new javax.swing.JButton();
+        lbldie1 = new javax.swing.JLabel();
+        lbldie2 = new javax.swing.JLabel();
+        lblmoney = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtgame = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btndice.setText("DICE");
-        btndice.addActionListener(new java.awt.event.ActionListener() {
+        btnroll.setText("Roll");
+        btnroll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btndiceActionPerformed(evt);
+                btnrollActionPerformed(evt);
             }
         });
+
+        lbltotal.setBackground(new java.awt.Color(153, 153, 0));
+        lbltotal.setFont(new java.awt.Font("TI-Nspire", 0, 36)); // NOI18N
+        lbltotal.setForeground(new java.awt.Color(153, 204, 255));
+
+        btnquit.setText("Quit");
+        btnquit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnquitActionPerformed(evt);
+            }
+        });
+
+        lblmoney.setBackground(new java.awt.Color(0, 0, 0));
+        lblmoney.setFont(new java.awt.Font("DialogInput", 1, 36)); // NOI18N
+        lblmoney.setForeground(new java.awt.Color(51, 255, 51));
+
+        txtgame.setColumns(20);
+        txtgame.setRows(5);
+        jScrollPane1.setViewportView(txtgame);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addComponent(btndice)
-                .addContainerGap(248, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnroll, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnquit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbldie1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addComponent(lbldie2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbltotal, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(lblmoney, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(btndice)
-                .addContainerGap(228, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lbltotal, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(63, 63, 63)
+                            .addComponent(jLabel1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lbldie1, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                            .addComponent(lbldie2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(20, 20, 20)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnquit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnroll, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(lblmoney, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btndiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndiceActionPerformed
-    
+    private void btnrollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrollActionPerformed
+        game.roll();
+        lbldie1.setIcon(game.getdiePic(1));
+        lbldie2.setIcon(game.getdiePic(2));
+        if(newgame){
+            txtgame.setText("New Game\nYou rolled a: "+game.getTotal());
+            newgame=false;
+            money-=5;
+            lblmoney.setText("$"+ money);
+        }
+        else
+            txtgame.append("\nYou rolled a: "+game.getTotal());
+            
+        lbltotal.setText(""+game.getTotal());
+            
         // TODO add your handling code here:
-        int num = (int) GET CODE TOMMORROW FROM AUSTINEZ 
-    }//GEN-LAST:event_btndiceActionPerformed
+        if(game.hasWon()){
+            txtgame.append("\nYou Won! \n Click roll to start a New Game");
+            game = new Craps();
+            newgame = true;
+            money+=15;
+            lblmoney.setText("$"+money);
+            
+        }
+        else if(game.hasLost())
+        {
+            txtgame.append("\n You Lost! \n Click roll to start a new Game");
+            game = new Craps();
+            newgame = true;
+           
+        }
+        if(money<5){
+            txtgame.append("\n You Lost! \n Click Quit to Leave the Casino");
+            btnroll.setEnabled(false);
+            
+        
+        }
+
+//GET CODE TOMMORROW FROM AUSTINEZ 
+    }//GEN-LAST:event_btnrollActionPerformed
+
+    private void btnquitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnquitActionPerformed
+        this.dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnquitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -100,6 +219,14 @@ public class CrapsGui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btndice;
+    private javax.swing.JButton btnquit;
+    private javax.swing.JButton btnroll;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbldie1;
+    private javax.swing.JLabel lbldie2;
+    private javax.swing.JLabel lblmoney;
+    private javax.swing.JLabel lbltotal;
+    private javax.swing.JTextArea txtgame;
     // End of variables declaration//GEN-END:variables
 }
