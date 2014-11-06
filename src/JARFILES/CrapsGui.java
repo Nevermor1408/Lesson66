@@ -174,7 +174,7 @@ public class CrapsGui extends javax.swing.JFrame {
         
         }
 
-//GET CODE TOMMORROW FROM AUSTINEZ 
+
     }//GEN-LAST:event_btnrollActionPerformed
 
     private void btnquitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnquitActionPerformed
